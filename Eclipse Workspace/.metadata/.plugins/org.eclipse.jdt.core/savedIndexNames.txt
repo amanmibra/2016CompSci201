@@ -1,0 +1,4 @@
+INDEX VERSION 1.129+C:\Users\Aman\OneDrive\Documents\Duke\Freshman Year\Fall Semester\CS 201\Git\2016CompSci201\Eclipse Workspace\.metadata\.plugins\org.eclipse.jdt.core
+3998907062.index
+2243114182.index
+1869085349.index

@@ -1,0 +1,15 @@
+
+   public class DNAMaxNucleotide {
+      public String max(String[] strands, String nuc) {
+    	  for(int k = 0; k < strands.length; k++){
+    		  String word = strands[k];
+    		  int lcount = 0;
+    		  for(int y = 0; y < word.size(); y++){
+    			  char c = word.charAt(y);
+    			  if(c == nuc){
+    				  lcount += 1;
+    			  }
+    		  }
+    	  }
+      }
+   }

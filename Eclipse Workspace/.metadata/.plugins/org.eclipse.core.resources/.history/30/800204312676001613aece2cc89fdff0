@@ -1,0 +1,28 @@
+
+   public class DNAMaxNucleotide {
+      public String max(String[] strands, String nuc) {
+    	  int[] storelcount = new int[strands.length]; //stores the multiple lcounts (dec later) for each word
+    	  for(int k = 0; k < strands.length; k++){
+    		  String word = strands[k]; //seperates the array into indv words
+    		  int lcount = 0;
+    		  for(int y = 0; y < word.size(); y++){
+    			  char c = word.charAt(y); //seperates words into indv letters to compare to nuc
+    			  if(c == nuc){
+    				  lcount += 1; //to find the number of nuc letters in a word
+    			  }
+    		  storelcount[k] = lcount;
+    		  }
+    	  int largest = storelcount[0];	
+    	  String answer = strands[0];
+    	  for(int i = 0; i < storelcount.length; i++){ //finds the largest value in array
+    		  if (storelcount[i] > largest){
+    			  largest = storelcount[i];
+    			  answer = strands[i];
+    		  }
+    		  else if(storelcount[i] == largest){
+    			  
+    		  }
+    	  }
+    	  }
+      }
+   }
