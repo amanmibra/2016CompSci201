@@ -1,0 +1,15 @@
+
+public class Recit1017 {
+	private class Node{
+		
+		String info;
+        Node next;
+        
+        public Node(String key){
+            this.info = key;
+            this.next = null;
+        }
+        
+        
+	}
+}

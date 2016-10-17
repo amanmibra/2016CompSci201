@@ -1,0 +1,45 @@
+import java.util.*;
+
+public class MemberCheck {
+	public static void main(String[] args){
+		MemberCheck x = new MemberCheck();
+		String[] club1 = new String[]{"DOUG", "DOUG", "DOUG", "DOUG", "DOUG" };
+		String[] club2 = new String[]{"BOBBY", "BOBBY", "DOUG", "JAMES" };
+		String[] club3 = new String[]{"JAMES"};
+		System.out.println(x.whosDishonest(club1, club2, club3));
+	}
+	public String whosDishonest(String[] club1, String[] club2,  String[] club3) {
+		Arrays.sort(club1);
+		Arrays.sort(club2);
+		Arrays.sort(club3); 
+		List<String> list = new ArrayList<String>(); //holds a list of the repeated names
+		for(String s: club1){
+			for(String s2: club2){ 
+				if(s == s2){
+					list.add(s); //finds repeated string in club 1 and 2
+					}
+			for(String s3: club3){
+				if(s == s3){
+					list.add(s); //finds repeated string in club 1 and 3
+					}
+				}				
+			}
+		}
+		for(String s: club2){
+			for(String s2: club3){
+				if(s == s2){
+					list.add(s); //finds repeated string in club 2 and 3
+					}
+				}
+		}
+		Collections.sort(list);
+		Set<String> set1 = new HashSet<String>(list); //made a hashset because Collections.sort wasnt functioning
+		//System.out.println(set1);
+		String[] answer = set1.toArray(new String[0]);
+		//System.out.println(Arrays.toString(answer));
+		Arrays.sort(answer);
+		System.out.println(answer);
+		String ans = Arrays.toString(answer);
+		return ans;
+	}
+}

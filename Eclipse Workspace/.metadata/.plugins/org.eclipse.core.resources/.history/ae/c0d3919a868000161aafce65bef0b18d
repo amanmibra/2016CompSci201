@@ -1,0 +1,13 @@
+import java.util.*;
+
+public class Anonymous {
+	public int howMany(String[] headlines, String[] messages) {
+		String collectH = "";
+		for(String s : headlines){
+			collectH = collectH + s; 
+		}
+		collectH = collectH.toLowerCase();
+		char[] 
+		return 0;
+	}
+}

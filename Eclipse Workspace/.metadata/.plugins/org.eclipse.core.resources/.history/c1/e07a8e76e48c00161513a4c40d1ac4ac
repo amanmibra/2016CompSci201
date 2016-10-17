@@ -1,0 +1,79 @@
+import java.util.*;
+public class WordGram implements Comparable<WordGram> {
+	public String[] myWords;
+    private int myHash;
+    
+	public WordGram(String[] source, int start, int size){
+		myWords = Arrays.copyOfRange(source, start, start + size);
+		myHash = turnHash(myWords);
+	}
+	public int length(){
+		return myWords.length;
+	}
+	
+	public int turnHash(String[] array){
+		String str = Arrays.toString(array);
+		return str.hashCode();
+	}
+	
+	public int hashCode(){
+		return myHash;
+	}
+	
+	public String toString(String[] array){
+		int len = myWords.length;
+		if(len == 0){
+			return "{}";
+		}
+		String out = "{\"" + myWords[0] + "\"}"; 
+		for(int i = 1; i < myWords.length - 1; i++){
+			out += ", \"" + myWords[i] + "\""; 
+		}
+		if(len >= 2){
+			out += ", \"" + myWords[len-1] + "\"}";
+		}
+		else{
+			out+="}";
+		}
+		return out;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null){
+			return false;
+		}
+		if(!(obj instanceof WordGram)){
+			return false;
+		}
+		WordGram wg = ((WordGram)obj);
+		String str = Arrays.toString(myWords);
+		if(this.hashCode() == wg.hashCode() && Arrays.toString(wg.myWords).equals(str)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	@Override
+	public int compareTo(WordGram obj) {
+		String str1 = Arrays.toString(obj.myWords);
+		String str2 = Arrays.toString(this.myWords);
+		if(str1.equals("{}")){
+			return -1; 
+		}
+		return str1.compareTo(str2);
+	}
+	public WordGram shiftAdd(String last){
+		String[] arry = new String[myWords.length];
+		for(int i = 0; i < myWords.length - 1; i++){
+			arry[i] = myWords[i+1];
+		}
+		arry[myWords.length - 1] = last;
+		return new WordGram(arry, 0, myWords.length);
+	}
+	
+
+}

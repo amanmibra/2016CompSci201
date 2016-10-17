@@ -1,0 +1,91 @@
+import java.util.*;
+
+public class EfficientMarkov implements MarkovInterface<String>{
+	//-------------------------------
+	private static String PSEUDO_EOS = ""; //this is the variable letter will be set to if there is no EOS after...
+										   //the 3-gram
+	HashMap<String, ArrayList<String>> markMap = new HashMap<>(); //map to store data for the 3-gram data
+	final String alphabet = "abcdefghijklmnopqrstuvwxyz";
+	final int N = alphabet.length();
+    Random r = new Random();
+    private String myText;
+	private Random myRandom;
+	private int myOrder;
+	private static int RANDOM_SEED = 1234;
+	//-------------------------------
+    
+	public EfficientMarkov(int order) {
+		myRandom = new Random(RANDOM_SEED);
+		myOrder = order;
+	}
+	
+	public EfficientMarkov() {
+		this(3);
+	}
+	
+	@Override
+	public void setTraining(String text) {
+		// TODO Auto-generated method stub
+		myText = text; 
+	}
+
+	@Override
+	public String getRandomText(int length) {
+		// TODO Auto-generated method stub
+		StringBuilder sb = new StringBuilder();
+		int index = myRandom.nextInt(myText.length() - myOrder);
+
+		String current = myText.substring(index, index + myOrder);
+		//System.out.printf("first random %d for '%s'\n",index,current);
+		sb.append(current);
+		for(int k=0; k < length-myOrder; k++){
+			ArrayList<String> follows = getFollows(current);
+			if (follows.size() == 0){
+				break;
+			}
+			index = myRandom.nextInt(follows.size());
+			
+			String nextItem = follows.get(index);
+			if (nextItem.equals(PSEUDO_EOS)) {
+				//System.out.println("PSEUDO");
+				break;
+			}
+			sb.append(nextItem);
+			current = current.substring(1)+ nextItem;
+		}
+		return sb.toString();
+	}
+
+	@Override
+	public ArrayList<String> getFollows(String key) {
+		//CREATING MAP 
+		String letter; //initializes the variable to store the extra letter after the 3-gram
+		for(int i = 0; i < myText.length() - 2; i++){ //this loop is meant to go through every letter except the last 2
+			if(myText.indexOf(myText.substring(i +3)) == -1){
+				letter = PSEUDO_EOS; //if the substring after i+3 does not exist then set the letter to Psuedo_EOS
+			}
+			else{
+				letter = myText.substring(i+3,i+3); //otherwise letter is the letter right after the 3-gram
+			}
+			String keys = myText.substring(i, i+2); //creates the 3-gram in order to use it as a key
+			ArrayList<String> value = markMap.get(keys);
+			if(value != null){ //checks if a value already exists within map
+				markMap.get(keys).add(letter); //this adds another letter to the key's value
+			}
+			else{ //what happens if the value (and assuming the key) does not exist
+				value = new ArrayList<String>();
+				value.add(letter);
+				markMap.put(keys, value);
+			}
+		}
+		//END MAP CREATION
+		return markMap.get(key);
+	}
+
+	@Override
+	public int getOrder() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

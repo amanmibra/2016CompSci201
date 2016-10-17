@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Anonymous {
+	public static void main(String[] args){
+		Anonymous x = new Anonymous();
+		
+	}
+	public int howMany(String[] headlines, String[] messages) {
+		int ans = 0;
+		String collectH = "";
+		for(String s : headlines){
+			collectH = collectH + s; 
+		}
+		collectH = collectH.toLowerCase();
+		char[] headChar = collectH.toCharArray();
+		
+		for(String mess : messages){
+			boolean word = true; 
+			String message = mess.toLowerCase(); 
+			for(int i = 0; i < message.length(); i++){
+				boolean letter = false;
+				char messChar = message.charAt(i);
+				for(int j = 0; j < headChar.length; j++){
+					if(messChar == headChar[i]){
+						headChar[i] = '0';
+						letter = true;
+						break;
+					}
+					if(!letter){
+						word = false;
+						break;
+					}
+				}
+				if(word){
+					ans++; 
+				}
+			}
+		}
+		return ans;
+	}
+}

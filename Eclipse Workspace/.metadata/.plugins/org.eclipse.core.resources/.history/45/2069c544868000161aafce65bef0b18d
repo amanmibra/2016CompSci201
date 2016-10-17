@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class Anonymous {
+	public static void main(String[] args){
+		Anonymous x = new Anonymous();
+		String[] headlines = new String[] {"Earthquake in San Francisco","Burglary at musuem in Sweden", "Poverty"};
+		String[] messages = new String[]{"Give me my money back", "I am the best coder", "TOPCODER"};
+		System.out.println(x.howMany(headlines, messages));
+	}
+    public int howMany(String[] headlines, String[] messages) {
+		int counter = 0; //Initializing return variable
+		List<String> headList = lwercase(headlines); //calling method to lowercase strings in the arrays
+		List<String> messList = lwercase(messages);
+		String[] messArry = new String[messList.size()];
+		messArry = messList.toArray(messArry);
+		for(int i = 0; i < messages.length; i++){
+			List<Character> messChar = new ArrayList<Character>(); //makes char Array out of message string
+			for(char c : messArry[i].toCharArray()){
+				messChar.add(c);
+			}
+			for(int j = 0; j < headlines.length; j++){
+				String head = headList.get(j); //makes a single string from a string listarray
+				int ans = getAnswer(messChar, head);
+				//System.out.println("   "+ans + " " + messChar.length);
+				System.out.println(ans + "---" + messChar.size());
+				if(ans == messChar.size()){
+					counter = counter + 1;
+				}
+			}
+		}
+    	return counter;
+    }
+    public List<String> lwercase(String[] array1){ //lowercases arrays
+    	List<String> arList = new ArrayList<String>();
+    	for(int i = 0; i < array1.length; i++){
+    		arList.add(array1[i].toLowerCase());
+    	}
+    	return arList;
+    }
+    public char[] toChar(String s){ //turns string into character array
+    	char[] c = s.toCharArray();
+    	return c;
+    }
+    public int getAnswer(List<Character> c, String s){
+    	System.out.println(c + " - " + s);
+    	int ans = 0;
+    	for(char ch: c){
+    		if(s.indexOf(ch) > 0){
+    			ans++;
+    			
+    		}
+    	}
+    	System.out.println("ANS: " + ans);
+    	return ans;
+    }
+}

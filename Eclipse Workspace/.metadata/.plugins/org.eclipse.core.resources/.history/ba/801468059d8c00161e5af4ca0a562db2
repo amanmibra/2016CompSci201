@@ -1,0 +1,16 @@
+
+public class WordGram implements Comparable<WordGram> {
+	private String[] myWords;
+    private int myHash;
+    
+	public WordGram(String[] source, int start, int size){
+		System.arraycopy(source, start, myWords, 0, size);
+	}
+	
+	@Override
+	public int compareTo(WordGram arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

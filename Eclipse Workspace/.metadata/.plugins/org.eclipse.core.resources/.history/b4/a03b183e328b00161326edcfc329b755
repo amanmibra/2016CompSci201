@@ -1,0 +1,72 @@
+import java.util.*;
+
+public class EfficientMarkov implements MarkovInterface<String>{
+	//-------------------------------
+	private static String PSEUDO_EOS = ""; //this is the variable letter will be set to if there is no EOS after...
+										   //the 3-gram
+	HashMap<String, ArrayList<String>> markMap = new HashMap<>(); //map to store data for the 3-gram data
+	final String alphabet = "abcdefghijklmnopqrstuvwxyz";
+	final int N = alphabet.length();
+    Random r = new Random();
+    private String myText;
+	private Random myRandom;
+	private int myOrder;
+	private static int RANDOM_SEED = 1234;
+	//-------------------------------
+    
+	public EfficientMarkov(int order) {
+		myRandom = new Random(RANDOM_SEED);
+		myOrder = order;
+	}
+	
+	public EfficientMarkov() {
+		this(3);
+	}
+	
+	@Override
+	public void setTraining(String text) {
+		// TODO Auto-generated method stub
+		String letter; //initializes the variable to store the extra letter after the 3-gram
+		for(int i = 0; i < text.length() - 2; i++){ //this loop is meant to go through every letter except the last 2
+			if(text.indexOf(text.substring(i +3)) == -1){
+				letter = PSEUDO_EOS; //if the substring after i+3 does not exist then set the letter to Psuedo_EOS
+			}
+			else{
+				letter = text.substring(i+3,i+3); //otherwise letter is the letter right after the 3-gram
+			}
+			String key = text.substring(i, i+2); //creates the 3-gram in order to use it as a key
+			ArrayList<String> value = markMap.get(key);
+			if(value != null){ //checks if a value already exists within map
+				markMap.get(key).add(letter); //this adds another letter to the key's value
+			}
+			else{ //what happens if the value (and assuming the key) does not exist
+				value = new ArrayList<String>();
+				value.add(letter);
+				markMap.put(key, value);
+
+			}
+		}
+	}
+
+	@Override
+	public String getRandomText(int length) {
+		// TODO Auto-generated method stub
+		StringBuilder sb = new StringBuilder(); //creates string builder which is the skeleton for the return value
+		while(sb.length() <= length){ //this while loop continues as long as the stringbuilder is less than the argument
+			sb.append(alphabet.charAt(r.nextInt(N))); //adds char to stringbuilder 
+		}
+		return sb.toString(); //returns the stringbuilder after being converted to a string
+	}
+
+	@Override
+	public ArrayList<String> getFollows(String key) {
+		return markMap.get(key);
+	}
+
+	@Override
+	public int getOrder() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

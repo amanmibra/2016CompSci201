@@ -1,0 +1,40 @@
+import java.util.*;
+
+public class MemberCheck {
+	public static void main(String[] args){
+		MemberCheck x = new MemberCheck();
+		String[] club1 = new String[]{"DOUG", "DOUG", "DOUG", "DOUG", "DOUG" };
+		String[] club2 = new String[]{"BOBBY", "BOBBY", "DOUG", "JAMES" };
+		String[] club3 = new String[]{"JAMES"};
+		//System.out.println(Arrays.toString(x.whosDishonest(club1, club2, club3)));
+	}
+	public String[] whosDishonest(String[] club1, String[] club2,  String[] club3) {
+		List<String> list = new ArrayList<String>(); //holds a list of the repeated names
+		for(String s: club1){
+			if(Arrays.asList(club2).contains(s)){
+				if(!list.contains(s)){
+					list.add(s);
+				}
+			}
+		}
+			
+		for(String s: club3){
+			if(Arrays.asList(club2).contains(s) || Arrays.asList(club1).contains(s)){
+				if(!list.contains(s)){
+					list.add(s);
+				}
+			}
+		}
+		
+		Collections.sort(list);
+		//System.out.println(set1);
+		String[] answer = new String[list.size()];
+		list.toArray(answer);
+		
+		//System.out.println(Arrays.toString(answer));
+		Arrays.sort(answer);
+		//System.out.println(answer);
+		return answer;
+		}
+	}
+}
