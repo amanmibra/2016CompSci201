@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<item value="0" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
 	<list key="RepositorySelectionPage.UsedUris">
+		<item value="git@git.cs.duke.edu:aman.ibrahim/dna-start-fall16.git"/>
 		<item value="git@git.cs.duke.edu:aman.ibrahim/nbody-start.git"/>
 		<item value="aman.ibrahim%40duke.edu@git.cs.duke.edu:aman.ibrahim/nbody-start.git"/>
 	</list>

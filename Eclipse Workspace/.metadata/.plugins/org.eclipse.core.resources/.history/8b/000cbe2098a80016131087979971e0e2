@@ -1,0 +1,28 @@
+import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+public class TextWriter {
+	public static void main(String[] args) throws FileNotFoundException{
+		File filename = new File("Test1.txt");
+		PrintWriter outS = new PrintWriter(filename);
+		StringBuilder sb = new StringBuilder("");
+
+		for(int i =0; i < 100; i++){
+
+			for(int z = 0; z < i; z++){
+				sb.append("xgac");
+			}
+
+			for(int j =0; j<1000; j++){
+				if(sb.length() >= 1000) break;
+				sb.append("x");
+
+			}
+			System.out.println(sb);
+			outS.println(sb);
+			sb = new StringBuilder("");
+		}
+		outS.close();
+	}
+}

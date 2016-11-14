@@ -1,0 +1,7 @@
+
+public class Leaves {
+	public int[] getLeaves(TreeNode t) {
+		
+		return new int[0];
+	}
+}

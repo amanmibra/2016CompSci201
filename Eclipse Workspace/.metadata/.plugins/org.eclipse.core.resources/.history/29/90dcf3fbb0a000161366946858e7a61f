@@ -1,0 +1,28 @@
+   
+public class BSTcount {
+	public long howMany(int[] values) {
+            // fill in code here
+		int size = values.length;
+		return catalan(size);
+      }
+	long catalan(int n) {
+        int res = 0;
+         
+        // Base case
+        if (n <= 1) {
+            return 1;
+        }
+        for (int i = 0; i < n; i++) {
+            res += catalan(i) * catalan(n - i - 1);
+        }
+        Long longvalue = new Long(res);
+        return longvalue;
+    }
+	
+	public static void main(String args[]){
+		BSTcount x = new BSTcount();
+		int[] values = {1 , 2 , 3, 4};
+		long ans = x.howMany(values);
+		System.out.println(ans);
+	}
+   }

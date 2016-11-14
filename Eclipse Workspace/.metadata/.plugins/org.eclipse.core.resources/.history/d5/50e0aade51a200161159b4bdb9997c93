@@ -1,0 +1,25 @@
+
+
+public class TrueSpace {
+	public long calculateSpace(int[] sizes, int clusterSize) {
+		double multi = 0;
+		for(int i : sizes){
+			if(i > clusterSize){
+				double num = Math.ceil(i/clusterSize);
+				multi = multi + num;
+				continue;
+			}
+			multi = multi + 1;
+		}
+		if(multi == 0)multi = 1;
+		long multiLong = (long) multi;
+		return clusterSize * multiLong;
+	}
+	
+	public static void main(String args[]){
+		TrueSpace x = new TrueSpace();
+		int[] size = {600};
+		int clusterSize = 512;
+		System.out.println(x.calculateSpace(size, clusterSize));
+	}
+}

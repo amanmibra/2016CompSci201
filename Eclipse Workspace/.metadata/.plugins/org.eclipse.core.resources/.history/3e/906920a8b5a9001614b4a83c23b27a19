@@ -1,0 +1,11 @@
+
+public class Isomorphic {
+	public String sameShape(TreeNode s, TreeNode t) {
+		if(s == null & t == null)return "same";
+		if(s == null || t == null)return "different";
+		boolean truth = sameShape(s.left, t.left).equals(sameShape(s.right, t.right));
+		String l = sameShape(s.left, t.left);  String r = sameShape(s.right, t.right);
+		if(l.equals(r)) return "same";
+		return "different";
+	}
+}
