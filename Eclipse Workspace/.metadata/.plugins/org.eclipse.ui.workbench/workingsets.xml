@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1479775291084_1" label="CS 201 - Before MidTerm II" name="CS 201 - Before MidTerm II">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/dna-start-fall16" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Gravity" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APTs November 3" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APT Quiz 2" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/markov-start-fall16" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/DNAMaxNucleotide" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APTs Sept 22" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/nbody-start" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APT_Practice_Quiz" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APT Quiz #1" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/DNAReverse" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APT Dec 1" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/APTs November 14" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Pre-Rec Nov 7" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Practice" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1473348309981_0" label="Window Working Set" name="Aggregate for window 1473348309981"/>
+<mruList name="CS 201 - Before MidTerm II"/>
 </workingSetManager>
